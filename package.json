@@ -1,0 +1,22 @@
+{
+  "name": "the-crash",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "description": "Fingerprints files with private keys.",
+  "repository": "https://github.com/the-hippo-crash/the-crash.git",
+  "keywords": [
+    "Electron",
+    "public",
+    "private",
+    "key",
+    "signature"
+  ],
+  "author": "The Crash",
+  "devDependencies": {
+    "electron": "^1.4.7"
+  }
+}
