@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Key factory</title>
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/dist/main.css" rel="stylesheet" />
+    <script>
+      // // For bootstrap
+      var $ = require('jquery');
+      // expose jquery for bootstrap
+      window.jQuery = $;
+      require('bootstrap');
+    </script>
+    <script src="../libs/file-upload.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-xs-12">
+          <form class="form">
+              <div class="form-group">
+                  <label for="private">Private key <a href="copyprivate">Copy</a></label>
+                  <input class="form-control" type="text" id="private" name="private"/>
+              </div>
+              <div id="preview">
+                Preview data
+              </div>
+              <div class="form-group">
+                  <input type="button" class="btn btn-block btn-primary" value="Generate keys">
+                  <input type="button" class="btn btn-block btn-primary" value="Create hash with uploaded file">
+              </div>
+          </form>
+          <div id="file-uploader">
+              <!--+ Drop file-->
+              <input type="file" name="upload-file" id="upload-file" accept="file_extension .rsa,.pdf">
+              <input type="button" name="upload-file-button" id="upload-file-button" class="btn btn-block btn-primary" value="Upload file">
+          </div>
+
+      </div>
+    </div>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./../renderer.js')
+  </script>
+</html>
