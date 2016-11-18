@@ -1,6 +1,7 @@
 'use strict';
 
-let RSA = require('node-rsa');
+let RSA = require('node-rsa'),
+    fs = require('fs');
 
 /**
  * Basic class, responsible for everything related to encryption.
@@ -13,6 +14,7 @@ class Encryption {
 
     /**
      * Generates a key pair and saves it in the instance
+     * @TODO: should be async, is slow now.
      * @returns this
      */
     generateKeyPair() {
@@ -48,6 +50,41 @@ class Encryption {
         }
 
         return this._key.exportKey('pkcs1-' + type);
+    }
+
+    /**
+     * Saves the public key to a file.
+     * @param {string} location The location on the filesystem to store the file
+     * @param done Callback function
+     */
+    savePublicKey(location, done) {
+        this._saveKey('public', location, done);
+    }
+
+    /**
+     * Saves the private key to a file.
+     * @param {string} location The location on the filesystem to store the file
+     * @param done Callback function
+     */
+    savePrivateKey(location, done) {
+        this._saveKey('private', location, done);
+    }
+
+    /**
+     * Saves a key to a file.
+     * @param {string} type 'private' or 'public'
+     * @param location The location on the filesystem to store the file
+     * @param done Callback function
+     * @private
+     */
+    _saveKey(type, location, done) {
+        let content = this._getKey(type);
+
+        if(!content) {
+            return done('No key loaded');
+        }
+
+        fs.writeFile(location, content, done);
     }
 }
 
