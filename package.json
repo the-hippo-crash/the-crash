@@ -16,7 +16,10 @@
     "signature"
   ],
   "author": "The Crash",
+  "dependencies": {
+    "node-rsa": "0.4.2"
+  },
   "devDependencies": {
-    "electron": "^1.4.7"
+    "electron": "1.4.7"
   }
 }
