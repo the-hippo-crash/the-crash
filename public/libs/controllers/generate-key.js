@@ -6,12 +6,15 @@ const async = require('async'),
 // @TODO Bugfix: existing keys will now be overwritten.
 // @TODO: Key files should be stored with the right permissions.
 
-(function($) {
+(function ($) {
+    const settings = require('electron-settings');
     /**
      * Add event listener for form submission
      */
     $(document).ready(function () {
-        $('form[data-form-generate-key]').on('submit', function(e) {
+
+
+        $('form[data-form-generate-key]').on('submit', function (e) {
             e.preventDefault();
 
             // Hide previous error messages.
@@ -21,17 +24,17 @@ const async = require('async'),
             let dir = $('#generate-key-pair-path').val();
 
             // Make sure that the directory exists.
-            fs.stat(dir, function(err, stat) {
-                if(err) {
+            fs.stat(dir, function (err, stat) {
+                if (err) {
                     return showError('Directory does not exist');
                 }
 
-                if(!stat.isDirectory()) {
+                if (!stat.isDirectory()) {
                     return showError('Given path is not a directory');
                 }
 
-                generateKeyPair(dir, function(err) {
-                    if(err) {
+                generateKeyPair(dir, function (err) {
+                    if (err) {
                         return showError(err);
                     }
 
@@ -41,6 +44,11 @@ const async = require('async'),
                     // Display file locations
                     $('#generate-key-pair-path-private').text(dir + '/private.key');
                     $('#generate-key-pair-path-public').text(dir + '/public.key');
+
+                    // Save private key dir in config
+                    settings.defaults({
+                        privateKey: dir + '/private.key'
+                    });
 
                     // Display the next view.
                     openPage('generate-key--generated');
@@ -60,10 +68,10 @@ const async = require('async'),
 
         // Save the keys to the filesystem.
         async.series([
-            function(cb) {
+            function (cb) {
                 encryption.savePrivateKey(path + '/private.key', cb);
             },
-            function(cb) {
+            function (cb) {
                 encryption.savePublicKey(path + '/public.key', cb);
             }
         ], done);
@@ -86,7 +94,7 @@ const async = require('async'),
     }
 
     // Exit handler
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('[data-generate-key-pair-exit]').on('click', openHome);
     });
 
