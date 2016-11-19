@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Key factory</title>
-    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../dist/css/main.css" rel="stylesheet" />
+    <head>
+        <meta charset="UTF-8">
+        <title>Key factory</title>
+        <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../dist/css/main.css" rel="stylesheet"/>
+        <script>
+            // // For bootstrap
+            var $ = require('jquery');
+            // expose jquery for bootstrap
+            window.jQuery = $;
+            require('bootstrap');
+        </script>
+        <script src="../libs/file-upload.js"></script>
+        <script src="../libs/navigator.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-xs-12">
+                <form class="form">
+                    <div class="form-group">
+                        <input type="button" data-toggle="collapse" href="#generate-keys"
+                               class="btn btn-block btn-primary" id="generate-keys-button-js" value="Generate keys">
+                        <div class="collapse" id="generate-keys">
+                            <div class="card card-block">
+                                <input class="btn" id="choose-savepath-button" value="Choose savepath.."/>
+                                <input class="btn" id="generate-keys-button" value="Generate and save keys"/>
+                            </div>
+                        </div>
+                        <div class="collapse" id="show_key">
+                            <div class="card card-block">
+                                <input class="btn" id="choose-savepath-button" value="Choose savepath.."/>
+                                <input class="btn" id="generate-keys-button" value="Generate and save keys"/>
+                            </div>
+                        </div>
+                        <input type="button" name="upload-file-button" id="upload-private-key-file-button-js"
+                               class="btn btn-block btn-primary" value="Upload private key">
+                    </div>
+                </form>
+
+                <hr>
+
+                <!--+ Drop file-->
+                <h1> Sign a file </h1>
+                <div id="file-uploader" class="col-xs-9">
+                </div>
+                <div class="col-xs-3">
+                    <label for="current-key">Loaded key</label>
+                    <input type="text" class="form-control" disabled value="test"/>
+
+                    <input type="button" class="btn btn-block form-control" value="Load new key"/>
+                    <input type="button" class="btn btn-block form-control" value="Generate new key"/>
+                </div>
+                <input type="button" name="upload-file-button" id="upload-pdf-file-button"
+                       class="btn btn-block btn-primary" value="Upload file"/>
+                <input type="button" name="upload-file-button" id="choose-file-dir-button"
+                       class="btn btn-block btn-primary" value="Choose save path"/>
+                <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js"
+                       value="Create hash with uploaded file"/>
+            </div>
+        </div>
+    </body>
+
     <script>
-      // // For bootstrap
-      var $ = require('jquery');
-      // expose jquery for bootstrap
-      window.jQuery = $;
-      require('bootstrap');
+        // You can also require other files to run in this process
+        require('./../renderer.js')
     </script>
-    <script src="../libs/file-upload.js"></script>
-    <script src="../libs/navigator.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="col-xs-12">
-          <form class="form">
-              <div class="form-group">
-                  <input type="button" data-toggle="collapse" href="#generate-keys" class="btn btn-block btn-primary" id="generate-keys-button-js" value="Generate keys">
-                  <div class="collapse" id="generate-keys">
-                      <div class="card card-block">
-                          <input class="btn" id="choose-savepath-button" value="Choose savepath.." />
-                          <input class="btn" id="generate-keys-button" value="Generate and save keys" />
-                      </div>
-                  </div>
-                  <div class="collapse" id="show_key">
-                      <div class="card card-block">
-                          <input class="btn" id="choose-savepath-button" value="Choose savepath.." />
-                          <input class="btn" id="generate-keys-button" value="Generate and save keys" />
-                      </div>
-                  </div>
-                  <input type="button" name="upload-file-button" id="upload-private-key-file-button-js" class="btn btn-block btn-primary" value="Upload private key">
-              </div>
-          </form>
-
-          <hr>
-
-          <!--+ Drop file-->
-          <h1> Sign a file </h1>
-          <div id="file-uploader" class="col-xs-9">
-          </div>
-          <div class="col-xs-3">
-              <label for="current-key">Loaded key</label>
-              <input type="text" class="form-control" disabled value="test" />
-
-              <input type="button" class="btn btn-block form-control" value="Load new key" />
-              <input type="button" class="btn btn-block form-control" value="Generate new key" />
-          </div>
-          <input type="button" name="upload-file-button" id="upload-pdf-file-button" class="btn btn-block btn-primary" value="Upload file" />
-          <input type="button" name="upload-file-button" id="choose-file-dir-button" class="btn btn-block btn-primary" value="Choose save path" />
-          <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js" value="Create hash with uploaded file" />
-      </div>
-    </div>
-  </body>
-
-  <script>
-    // You can also require other files to run in this process
-    require('./../renderer.js')
-  </script>
 </html>

@@ -10,15 +10,14 @@ body, html {
   background-color: $background-color;
 }
 
-.container
-{
+.container {
   padding: $default-padding
 }
 
-h1,h2,h3,h4
-{
+h1, h2, h3, h4 {
   font-size: $font-size-header
 }
+
 //
 //.secondary-colors,
 //.secondary-colors:hover,
@@ -43,7 +42,6 @@ h1,h2,h3,h4
 //}
 
 // By default, hide all 'pages'
-div[data-page]
-{
+div[data-page] {
   display: none;
 }
