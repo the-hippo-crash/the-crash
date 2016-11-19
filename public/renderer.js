@@ -7,3 +7,4 @@ openHome();
 // encryption should be available globally.
 let Encryption = require('../libs/encryption');
 const encryption = new Encryption();
+window.encryption = encryption;
