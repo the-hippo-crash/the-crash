@@ -28,8 +28,10 @@
         const {dialog} = require('electron').remote;
         var dirs = dialog.showOpenDialog({properties: properties});
 
-        // Only one dir could be selected, so set the path in the input field.
-        $target.val(dirs[0]);
+        // Maximum one dir could be selected, so set the path in the input field.
+        if(dirs) {
+            $target.val(dirs[0]);
+        }
     }
 
 })(jQuery);
