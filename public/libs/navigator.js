@@ -6,10 +6,10 @@
      * Add event handlers for navigation links
      */
     $(document).ready(function() {
-        $('data-open-page').onclick = function(e) {
+        $('[data-open-page]').on('click', function(e) {
             let page = $(e.target).attr('data-open-page');
             openPage(page);
-        };
+        });
     });
 
 })(jQuery);
@@ -21,4 +21,12 @@
 function openPage(page) {
     $('[data-page]').hide();
     $('[data-page="' + page + '"').show();
+}
+
+function openHome() {
+    // Which view is the home?
+    // @TODO
+    let home = 'start';
+
+    openPage(home);
 }
