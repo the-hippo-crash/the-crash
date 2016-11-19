@@ -1,7 +1,7 @@
 'use strict';
 
-let Encryption = require('./libs/encryption');
-let Signer = require('./libs/signer');
+let Encryption = require('./libs/encryption'),
+  Signer = require('./libs/signer');
 
 let encryption = new Encryption();
 // encryption.generateKeyPair();
@@ -20,7 +20,7 @@ let encryption = new Encryption();
   let signer = new Signer();
   signer.signFile('../../helloworld.txt', 'private.key', function (err, signature) {
     if(err) console.error(err);
-    console.log('signature: ' + signature);
+    console.log('signature: ' + signature.toString());
 
     signer.verifySignature('../../helloworld.txt', signature, 'public.key', (err, isValid) => {
       console.log('Signature verifies: ' + isValid);

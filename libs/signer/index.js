@@ -1,8 +1,8 @@
 'use strict';
 
-let RSA = require('node-rsa');
-let Encryption = require('../encryption');
-let fs = require('fs');
+let RSA = require('node-rsa'),
+  Encryption = require('../encryption'),
+  fs = require('fs');
 
 class FileSigner {
   constructor() {
@@ -30,10 +30,11 @@ class FileSigner {
   }
 
   /**
-   *
+   * Verifies a signature by looking at the file and the public key.
    * @param fileName String The filename for the file to check with the signature.
    * @param signature String the signature that goes with the file.
    * @param {String} keyFileName
+   * @param {function} done Callback
    * @returns boolean True when signature matches the file.
    */
   verifySignature(fileName, signature, keyFileName, done) {
@@ -48,7 +49,7 @@ class FileSigner {
   }
 
   /**
-   *
+   * Loads a file from the filesystem.
    * @param {String} fileName The filename of the file to load.
    * @param {function} done Callback
    */

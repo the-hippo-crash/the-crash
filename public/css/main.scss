@@ -41,3 +41,9 @@ h1,h2,h3,h4
 //{
 //  background-color: $accent-color;
 //}
+
+// By default, hide all 'pages'
+div[data-page]
+{
+  display: none;
+}
