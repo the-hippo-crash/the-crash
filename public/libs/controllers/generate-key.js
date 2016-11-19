@@ -13,20 +13,6 @@ const async = require('async'),
     $(document).ready(function () {
         const settings = require('electron-settings');
 
-
-        // settings.set('name', {
-        //     first: 'Cosmo',
-        //     last: 'Kramer'
-        // }).then(() => {
-        //     settings.get('name.first').then(val => {
-        //         console.log(val);
-        //         // => "Cosmo"
-        //     });
-        // });
-
-        settings.getSettingsFilePath();
-        // => /Users/You/Library/Application Support/YourApp/Settings
-
         $('form[data-form-generate-key]').on('submit', function (e) {
             e.preventDefault();
 
@@ -59,7 +45,6 @@ const async = require('async'),
                     $('#generate-key-pair-path-public').text(dir + '/public.key');
 
                     settings.has("private.location").then(exists => {
-                        console.log(exists);
                         if (exists === false) {
                             settings.set('private', {
                                 location: dir + '/private.key'

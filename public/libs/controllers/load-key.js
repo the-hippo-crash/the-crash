@@ -16,7 +16,6 @@
                 if(err) {
                     return showError(err);
                 }
-
                 // Load succeeded, open next page.
                 openPage('sign-file');
             });

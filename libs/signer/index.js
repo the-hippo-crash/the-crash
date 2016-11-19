@@ -1,14 +1,14 @@
 'use strict';
-
+let RSA = require('node-rsa');
 let fs = require('fs');
 
 class FileSigner {
   constructor() {
-    //this._rsa = new RSA();
-    //if(typeof encryption === 'undefined') {
-      //let Encryption = require('../encryption');
-      //this.encryption = new Encryption();
-    //}
+    this._rsa = new RSA();
+    if(typeof encryption === 'undefined') {
+      let Encryption = require('../encryption');
+      this.encryption = new Encryption();
+    }
   }
 
   /**
@@ -19,11 +19,11 @@ class FileSigner {
    * @returns
    */
   signFile(fileName, privateKey, done) {
-    /*if(privateKey !== 'undefined') {
-      encryption.loadKey(privateKey, 'pkcs1-private', (err) => {
-        if(err) console.log(err);
-      });
-    }*/
+      if(privateKey) {
+        encryption.loadKey(privateKey, 'pkcs1-private', (err) => {
+          if(err) return done(err);
+        });
+      }
       this.loadFile(fileName, (err, fileData) => {
         if(err) return done(err);
         return done(null, encryption.sign(fileData));
@@ -39,14 +39,17 @@ class FileSigner {
    * @returns boolean True when signature matches the file.
    */
   verifySignature(fileName, signature, keyFileName, done) {
-    //let that = this;
-    //encryption.loadKey(keyFileName, 'pkcs1-public', function (err) {
-    //  if(err) console.log(err);
+    console.log('verify sig');
+    let that = this;
+    encryption.loadKey(keyFileName, 'pkcs1-public', function (err) {
+     if(err) return done(err); //console.log(err);
       this.loadFile(fileName, (err, fileData) => {
-        if(err) return done(err);
-        return done(null, encryption.verify(fileData, signature));
+        if(err) console.log(err);//return done(err);
+        console.log(signature);
+        console.log(fileData);//
+        done(null, encryption.verify(fileData, signature));
       });
-    //});
+    });
   }
 
   /**

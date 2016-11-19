@@ -121,7 +121,10 @@ class Encryption {
       if(!this._key) {
         throw new Error('No key loaded');
       }
-      return this._key.sign(Buffer.from(fileData));
+      var binarySignature = this._key.sign(Buffer.from(fileData));
+
+      // Convert to readable text.
+      return new Buffer(binarySignature,'binary').toString('base64');
     }
 
   /**
