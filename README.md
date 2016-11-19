@@ -11,7 +11,10 @@ Generated private keys should be kept private and secure. Public keys should be 
 ```bash
 # Install dependencies
 npm install
+
+# Compile sass
+sass public/css/main.scss public/dist/css/main.css
+
 # Run the app
 npm start
 ```
-
