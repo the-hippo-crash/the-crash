@@ -6,10 +6,10 @@
      * Add event handlers for navigation links
      */
     $(document).ready(function() {
-        $('[data-open-page]').on('click', function(e) {
+        $('data-open-page').onclick = function(e) {
             let page = $(e.target).attr('data-open-page');
             openPage(page);
-        });
+        };
     });
 
     /**
