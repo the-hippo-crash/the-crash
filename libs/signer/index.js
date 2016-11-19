@@ -54,7 +54,7 @@ class FileSigner {
    * @param {function} done Callback
    */
   loadFile(fileName, done) {
-    fs.readFile( __dirname + "/" + fileName, done);
+    fs.readFile(__dirname + "/" + fileName, done);
   }
 }
 

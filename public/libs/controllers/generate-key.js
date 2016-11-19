@@ -1,14 +1,12 @@
 'use strict';
 
-let Encryption = require('../../libs/encryption'),
-    async = require('async'),
+const async = require('async'),
     fs = require('fs');
 
 // @TODO Bugfix: existing keys will now be overwritten.
+// @TODO: Key files should be stored with the right permissions.
 
 (function($) {
-    let encryption = new Encryption();
-
     /**
      * Add event listener for form submission
      */
@@ -87,6 +85,7 @@ let Encryption = require('../../libs/encryption'),
         $('#generate-key-pair-error').hide();
     }
 
+    // Exit handler
     $(document).ready(function() {
         $('[data-generate-key-pair-exit]').on('click', openHome);
     });

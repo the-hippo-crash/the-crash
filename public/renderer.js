@@ -3,3 +3,7 @@
 // All of the Node.js APIs are available in this process.
 
 openHome();
+
+// encryption should be available globally.
+let Encryption = require('../libs/encryption');
+const encryption = new Encryption();

@@ -16,6 +16,7 @@
         <script src="../libs/navigator.js"></script>
         <script src="../libs/fs-picker.js"></script>
         <script src="../libs/controllers/generate-key.js"></script>
+        <script src="../libs/controllers/load-key.js"></script>
     </head>
     <body>
         <div class="container">
@@ -34,10 +35,10 @@
                 <p class="alert-danger" class="hidden" id="generate-key-pair-error"></p>
 
                 <p>
-                <form data-form-generate-key>
-                    <input type="text" id="generate-key-pair-path" data-directory-picker />
-                    <input type="submit" value="Generate" />
-                </form>
+                    <form data-form-generate-key>
+                        <input type="text" id="generate-key-pair-path" data-directory-picker />
+                        <input type="submit" value="Generate" />
+                    </form>
                 </p>
 
                 <p>
@@ -63,52 +64,26 @@
                 </p>
             </div>
 
+            <div data-page="load-key">
+                <h1>Load your private key</h1>
 
-            <!--<div class="col-xs-12">
-                <form class="form">
-                    <div class="form-group">
-                        <input type="button" data-toggle="collapse" href="#generate-keys"
-                               class="btn btn-block btn-primary"
-                               id="generate-keys-button-js" value="Generate keys">
-                        <div class="collapse" id="generate-keys">
-                            <div class="card card-block">
-                                <input class="btn" id="choose-savepath-button" value="Choose savepath.."/>
-                                <input class="btn" id="generate-keys-button" value="Generate and save keys"/>
-                            </div>
-                        </div>
-                        <div class="collapse" id="show_key">
-                            <div class="card card-block">
-                                <input class="btn" id="choose-savepath-button" value="Choose savepath.."/>
-                                <input class="btn" id="generate-keys-button" value="Generate and save keys"/>
-                            </div>
-                        </div>
-                        <input type="button" name="upload-file-button" id="upload-private-key-file-button-js"
-                               class="btn btn-block btn-primary" value="Upload private key">
-                    </div>
-                </form>
+                <p class="alert-danger" id="load-key-pair-error"></p>
 
-                <hr>
+                <p>
+                    <form data-form-load-key>
+                        <input type="text" data-file-picker id="load-key-pair-path" />
+                        <input type="submit" data-open-page="load-key" value="Load key" />
+                    </form>
+                </p>
+                <p>
+                    <input type="button" value="Cancel" data-load-key-pair-exit />
+                </p>
+            </div>
 
-                <!--+ Drop file- ->
-                <h1> Sign a file </h1>
-                <div id="file-uploader" class="col-xs-9">
-                </div>
-                <div class="col-xs-3">
-                    <label for="current-key">Loaded key</label>
-                    <input type="text" class="form-control" disabled value="test"/>
+            <div data-page="sign-file">
+                Let's do some file signing here!
+            </div>
 
-                    <input type="button" class="btn btn-block form-control" value="Load new key"/>
-                    <input type="button" class="btn btn-block form-control" value="Generate new key"/>
-                </div>
-                <input type="button" name="upload-file-button" id="upload-pdf-file-button"
-                       class="btn btn-block btn-primary"
-                       value="Upload file"/>
-                <input type="button" name="upload-file-button" id="choose-file-dir-button"
-                       class="btn btn-block btn-primary"
-                       value="Choose save path"/>
-                <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js"
-                       value="Create hash with uploaded file"/>
-            </div>-->
         </div>
     </body>
 
