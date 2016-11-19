@@ -24,29 +24,5 @@ function openPage(page) {
 }
 
 function openHome() {
-    const settings = require('electron-settings');
-
-    settings.get('privateKey').then(value => {
-        if (value) {
-            console.log("Value true");
-            var key;
-            // Get the public key
-            fs.read(value + '/public.key', key);
-
-            // Show public key in text area
-            $('#generate-key-pair-public').val(key);
-
-            // Display file locations
-            $('#generate-key-pair-path-private').text(value + '/private.key');
-            $('#generate-key-pair-path-public').text(value + '/public.key');
-            let home = 'generate-key--generated';
-            openPage(home);
-        }
-        else {
-            console.log("falsyfals");
-            let home = 'start';
-            openPage(home);
-        }
-    });
 
 }
