@@ -9,3 +9,4 @@ let Encryption = require('../libs/encryption');
 const encryption = new Encryption();
 let Signer = require('../libs/signer');
 const signer = new Signer();
+window.encryption = encryption;
