@@ -56,7 +56,7 @@ const async = require('async'),
      */
     function generateKeyPair(path, done) {
         // Generate a new key pair.
-        encryption.generateKeyPair();
+        window.encryption.generateKeyPair();
 
         // Save the keys to the filesystem.
         async.series([
