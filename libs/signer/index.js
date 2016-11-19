@@ -1,15 +1,14 @@
 'use strict';
 
-let RSA = require('node-rsa'),
-  fs = require('fs');
+let fs = require('fs');
 
 class FileSigner {
   constructor() {
-    this._rsa = new RSA();
-    if(typeof encryption === 'undefined') {
-      let Encryption = require('../encryption');
-      this.encryption = new Encryption();
-    }
+    //this._rsa = new RSA();
+    //if(typeof encryption === 'undefined') {
+      //let Encryption = require('../encryption');
+      //this.encryption = new Encryption();
+    //}
   }
 
   /**
@@ -19,14 +18,14 @@ class FileSigner {
    * @returns
    */
   signFile(fileName, privateKey, done) {
-    if(privateKey !== 'undefined') {
-      this.encryption.loadKey(privateKey, 'pkcs1-private', (err) => {
+    /*if(privateKey !== 'undefined') {
+      encryption.loadKey(privateKey, 'pkcs1-private', (err) => {
         if(err) console.log(err);
       });
-    }
-      this.loadFile( fileName, (err, fileData) => {
+    }*/
+      this.loadFile(fileName, (err, fileData) => {
         if(err) return done(err);
-        return done(null, this.encryption.sign(fileData));
+        return done(null, encryption.sign(fileData));
       });
   }
 
@@ -39,14 +38,14 @@ class FileSigner {
    * @returns boolean True when signature matches the file.
    */
   verifySignature(fileName, signature, keyFileName, done) {
-    let that = this;
-    this.encryption.loadKey(keyFileName, 'pkcs1-public', function (err) {
-      if(err) console.log(err);
-      that.loadFile(fileName, (err, fileData) => {
+    //let that = this;
+    //encryption.loadKey(keyFileName, 'pkcs1-public', function (err) {
+    //  if(err) console.log(err);
+      this.loadFile(fileName, (err, fileData) => {
         if(err) return done(err);
-        return done(null, that.encryption.verify(fileData, signature));
+        return done(null, encryption.verify(fileData, signature));
       });
-    });
+    //});
   }
 
   /**
@@ -55,7 +54,7 @@ class FileSigner {
    * @param {function} done Callback
    */
   loadFile(fileName, done) {
-    fs.readFile(__dirname + "/" + fileName, done);
+    fs.readFile(fileName, done);
   }
 }
 

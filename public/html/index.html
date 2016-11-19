@@ -18,6 +18,7 @@
         <script src="../libs/controllers/FileSignController.js"></script>
         <script src="../libs/controllers/generate-key.js"></script>
         <script src="../libs/controllers/load-key.js"></script>
+        <script src="../libs/controllers/verify-file.js"></script>
     </head>
     <body>
         <div class="container">
@@ -27,6 +28,9 @@
                 </p>
                 <p class="center">
                     <input class="btn btn-default btn-lg" type="button" data-open-page="load-key" value="Load existing keys" />
+                </p>
+                <p class="center spacer-l">
+                    <input class="btn btn-default btn-lg" type="button" data-open-page="verify-file" value="Verify a file" />
                 </p>
             </div>
 
@@ -94,7 +98,7 @@
                     <p>
                         File location:
                     </p>
-                    <form data-form-sign-file >
+                    <form data-form-sign-file>
                         <input type="text" data-file-picker id="load-file-path"
                                placeholder="Browse" /><br />
                         <input type="submit" class="btn btn-block btn-primary"
@@ -105,6 +109,41 @@
                         <label id="#load-key-error" class="text-info" ></label><br />
                     </p>
                 </div>
+            </div>
+
+            <div data-page="verify-file">
+                <p class="alert alert-danger hidden" id="verify-file-error"></p>
+
+                <form data-form-verify-file>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">File to verify</label>
+                            <input type="text" data-file-picker placeholder="Browse" class="btn btn-block btn-default" id="verify-file-verification-file" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Public key</label>
+                            <textarea name="publicKey" rows="8" id="verify-file-public-key" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label">Signature</label>
+                            <input name="signature" id="verify-file-signature" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block" value="Validate this file!">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <input type="button" class="btn btn-default btn-block" value="Close" onclick="openHome();">
+                        </div>
+                    </div>
+                </form>
             </div>
 
         </div>

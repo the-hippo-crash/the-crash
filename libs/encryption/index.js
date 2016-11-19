@@ -148,6 +148,20 @@ class Encryption {
         // Simple remove all lines that start with '-----'
         return keyData.replace(/^-----.*\n?/gm, '').trim();
     }
+
+    verifyWithByPublicKeyString(verificationFile, signature, publicKey, done) {
+        let enc = new Encryption();
+        enc._rsa.importKey(publicKey, 'pkcs8-public');
+
+        // Read the contents of the verification file
+        fs.readFile(verificationFile, function(err, content) {
+            if(err) {
+                return done(err);
+            }
+
+            return enc.verify(content, signature);
+        });
+    }
 }
 
 module.exports = Encryption;
