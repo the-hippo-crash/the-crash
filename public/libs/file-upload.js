@@ -1,5 +1,5 @@
 (function () {
-    let Encryption = require('Encryption');
+    let Encryption = require('../../libs/encryption/index.js');
 
     $(document).ready(function () {
         var encryption = new Encryption();
