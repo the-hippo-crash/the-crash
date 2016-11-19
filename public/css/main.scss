@@ -1,3 +1,5 @@
+@import 'bootstrap';
+
 @import 'variables';
 @import 'modules/header';
 @import 'modules/file-uploader';
@@ -48,4 +50,8 @@ div[data-page] {
 
 .hidden {
   display: none;
+}
+
+.center {
+  text-align: center;
 }
