@@ -134,6 +134,11 @@ class Encryption {
    * @returns boolean True when signatures matches file.
    */
     verify(fileData, signature) {
+      // Convert signature from base64 to binary.
+      console.log(signature);
+      signature = new Buffer(signature, 'base64').toString('binary');
+      console.log(signature);
+
       // buffer — {buffer} — data for check, same as encrypt method.
       // signature — {string} — signature for check, result of sign method.
       // source_encoding — {string} — same as for encrypt method.
@@ -162,7 +167,7 @@ class Encryption {
 
     verifyWithByPublicKeyString(verificationFile, signature, publicKey, done) {
         let enc = new Encryption();
-        enc._rsa.importKey(publicKey, 'pkcs8-public');
+        enc._rsa.importKey(publicKey, 'pkcs1-public');
 
         // Read the contents of the verification file
         fs.readFile(verificationFile, function(err, content) {
