@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Key factory</title>
-    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../dist/css/main.css" rel="stylesheet" />
-    <script>
-      // // For bootstrap
-      var $ = require('jquery');
-      // expose jquery for bootstrap
-      window.jQuery = $;
-      require('bootstrap');
-    </script>
-    <script src="../libs/file-upload.js"></script>
-    <script src="../libs/navigator.js"></script>
-  </head>
-  <body>
-    <div class="container">
-        <div class="col-xs-12">
-            <form class="form">
-                <div class="form-group">
-                    <label for="private">Private key</label>
-                    <input class="form-control" type="text" id="private" name="private"/>
-                    <input type="button" name="upload-file-button" id="upload-private-key-file-button-js"
-                           class="btn btn-block btn-primary" value="Upload private key">
+    <head>
+        <meta charset="UTF-8">
+        <title>Key factory</title>
+        <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../dist/css/main.css" rel="stylesheet" />
+        <script>
+            // // For bootstrap
+            var $ = require('jquery');
+            // expose jquery for bootstrap
+            window.jQuery = $;
+            require('bootstrap');
+        </script>
+        <script src="../libs/file-upload.js"></script>
+        <script src="../libs/navigator.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-xs-12">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="private">Private key</label>
+                        <input class="form-control" type="text" id="private" name="private"/>
+                        <input type="button" name="upload-file-button" id="upload-private-key-file-button-js"
+                            class="btn btn-block btn-primary" value="Upload private key">
+                    </div>
+                    <div id="preview">
+                        Preview data
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-block btn-primary" id="generate-keys-button-js"
+                            value="Generate keys">
+                        <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js"
+                            value="Create hash with uploaded file">
+                    </div>
+                </form>
+                <div id="file-uploader">
+                    <!--+ Drop file-->
+                    <input type="button" name="upload-file-button" id="upload-pdf-file-button"
+                        class="btn btn-block btn-primary" value="Upload file">
                 </div>
-                <div id="preview">
-                    Preview data
-                </div>
-                <div class="form-group">
-                    <input type="button" class="btn btn-block btn-primary" id="generate-keys-button-js"
-                           value="Generate keys">
-                    <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js"
-                           value="Create hash with uploaded file">
-                </div>
-            </form>
-            <div id="file-uploader">
-                <!--+ Drop file-->
-                <input type="button" name="upload-file-button" id="upload-pdf-file-button"
-                       class="btn btn-block btn-primary" value="Upload file">
             </div>
-      </div>
-    </div>
-  </body>
+        </div>
+    </body>
 
-  <script>
-    // You can also require other files to run in this process
-    require('./../renderer.js')
-  </script>
+    <script>
+        // You can also require other files to run in this process
+        require('./../renderer.js')
+    </script>
 </html>
