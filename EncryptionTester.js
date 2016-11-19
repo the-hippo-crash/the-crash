@@ -3,7 +3,7 @@
 let Encryption = require('./libs/encryption'),
   Signer = require('./libs/signer');
 
-let encryption = new Encryption();
+const encryption = new Encryption();
 // encryption.generateKeyPair();
 //
 // encryption.savePrivateKey('./private.key', function(err) {

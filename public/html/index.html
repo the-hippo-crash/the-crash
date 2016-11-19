@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Key factory</title>
         <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="../dist/css/main.css" rel="stylesheet"/>
+        <link href="../dist/main.css" rel="stylesheet"/>
         <script>
             // // For bootstrap
             var $ = require('jquery');
@@ -15,6 +15,7 @@
         <script src="../libs/file-upload.js"></script>
         <script src="../libs/navigator.js"></script>
         <script src="../libs/fs-picker.js"></script>
+        <script src="../libs/controllers/FileSignController.js"></script>
         <script src="../libs/controllers/generate-key.js"></script>
         <script src="../libs/controllers/load-key.js"></script>
     </head>
@@ -81,7 +82,29 @@
             </div>
 
             <div data-page="sign-file">
-                Let's do some file signing here!
+                <div class="form-group">
+                    <p>
+                        <input type="button" data-open-page="generate-key" value="Generate new keys" />
+                    </p>
+                    <p>
+                        <input type="button" data-open-page="load-key" value="Load existing keys" />
+                    </p>
+
+                    <h2>Sign a file</h2>
+                    <p>
+                        File location:
+                    </p>
+                    <form data-form-sign-file >
+                        <input type="text" data-file-picker id="load-file-path"
+                               placeholder="Browse" /><br />
+                        <input type="submit" class="btn btn-block btn-primary"
+                               id="data-form-sign-file-submit" value="Sign"><br />
+                    </form>
+
+                    <p>
+                        <label id="#load-key-error" class="text-info" ></label><br />
+                    </p>
+                </div>
             </div>
 
         </div>
