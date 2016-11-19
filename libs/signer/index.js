@@ -14,6 +14,7 @@ class FileSigner {
   /**
    * Generates a signature for a file.
    * @param fileName
+   * @param {String} privateKey Optional location of the private key
    * @param {function} done Callback
    * @returns
    */
