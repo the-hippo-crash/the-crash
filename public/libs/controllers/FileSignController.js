@@ -10,10 +10,8 @@ let Signer = require('../../libs/signer');
       hideError();
       e.preventDefault();
       let fileName = $('#load-file-path').val();
-      console.log(fileName);
       signer.signFile(fileName, null, (err, signature) => {
         if(err) return console.log(err.toString());
-        console.log(signature);
         showError(signature);
       })
     });
