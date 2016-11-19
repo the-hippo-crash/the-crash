@@ -19,7 +19,52 @@
     </head>
     <body>
         <div class="container">
-            <div class="col-xs-12">
+            <div data-page="start">
+                <p>
+                    <input type="button" data-open-page="generate-key" value="Generate new keys" />
+                </p>
+                <p>
+                    <input type="button" data-open-page="load-key" value="Load existing keys" />
+                </p>
+            </div>
+
+            <div data-page="generate-key">
+                <h1>New key generation</h1>
+
+                <p class="alert-danger" class="hidden" id="generate-key-pair-error"></p>
+
+                <p>
+                <form data-form-generate-key>
+                    <input type="text" id="generate-key-pair-path" data-directory-picker />
+                    <input type="submit" value="Generate" />
+                </form>
+                </p>
+
+                <p>
+                    <input type="button" value="Cancel" data-generate-key-pair-exit />
+                </p>
+            </div>
+
+            <div data-page="generate-key--generated">
+                <h1>Key generated!</h1>
+
+                <p>
+                    Key pair has been saved to <code id="generate-key-pair-path-private"></code> and <code id="generate-key-pair-path-public"></code>.
+                </p>
+
+                <p>
+                    To start using this key, create a new <code>txt</code> DNS record for your root domain, with the following value:
+                </p>
+
+                <textarea rows="5" cols="50" id="generate-key-pair-public"></textarea>
+
+                <p>
+                    <input type="button" value="Close" data-generate-key-pair-exit />
+                </p>
+            </div>
+
+
+            <!--<div class="col-xs-12">
                 <form class="form">
                     <div class="form-group">
                         <input type="button" data-toggle="collapse" href="#generate-keys"
@@ -44,7 +89,7 @@
 
                 <hr>
 
-                <!--+ Drop file-->
+                <!--+ Drop file- ->
                 <h1> Sign a file </h1>
                 <div id="file-uploader" class="col-xs-9">
                 </div>
@@ -63,7 +108,7 @@
                        value="Choose save path"/>
                 <input type="button" class="btn btn-block btn-primary" id="create-hash-button-js"
                        value="Create hash with uploaded file"/>
-            </div>
+            </div>-->
         </div>
     </body>
 

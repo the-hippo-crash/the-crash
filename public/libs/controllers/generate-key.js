@@ -87,4 +87,9 @@ let Encryption = require('../../libs/encryption'),
         $('#generate-key-pair-error').hide();
     }
 
+    $(document).ready(function() {
+        $('[data-generate-key-pair-exit]').on('click', openHome);
+    });
+
+
 })(jQuery);
