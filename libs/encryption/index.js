@@ -86,6 +86,48 @@ class Encryption {
 
         fs.writeFile(location, content, done);
     }
+
+    /**
+    * Reads the key from a file.
+    * @param {String} location The location of the key file.
+    * @param {String} format The format of the key file.
+    * @param {function} done Callback
+    */
+    loadKey(location, format, done) {
+      fs.readFile(location, (err, keyData) => {
+        if (err) return done(err);
+        this._rsa.importKey(keyData, format);
+        this._key = this._rsa.keyPair;
+        done();
+      });
+    }
+
+  /**
+   *
+   * @param fileData The file to be signed.
+   * @returns String String fingerprint of the file signed with the private key.
+   */
+    sign(fileData) {
+      if(!this._key) {
+        throw new Error('No key loaded');
+      }
+
+      return this._key.sign(Buffer.from(fileData), 'base64', 'utf8');
+    }
+
+  /**
+   *
+   * @param fileData The file to be verified against the signature.
+   * @param signature The signature to be verified against the file.
+   * @returns boolean True when signatures matches file.
+   */
+    verify(fileData, signature) {
+      // buffer — {buffer} — data for check, same as encrypt method.
+      // signature — {string} — signature for check, result of sign method.
+      // source_encoding — {string} — same as for encrypt method.
+      // signature_encoding — {string} — encoding of given signature. May be 'buffer', 'binary', 'hex' or 'base64'. Default 'buffer'.
+      return this._key.verify(Buffer.from(fileData), Buffer.from(signature), 'buffer', 'base');
+    }
 }
 
 module.exports = Encryption;
