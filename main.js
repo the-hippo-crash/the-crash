@@ -56,6 +56,8 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 })
 
 // In this file you can include the rest of your app's specific main process
