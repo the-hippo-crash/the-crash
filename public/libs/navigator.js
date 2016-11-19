@@ -12,13 +12,13 @@
         };
     });
 
-    /**
-     * The page to open
-     * @param {string} page The page to open
-     */
-    function openPage(page) {
-        $('[data-page]').hide();
-        $('[data-page="' + page + '"').show();
-    }
-
 })(jQuery);
+
+/**
+ * The page to open
+ * @param {string} page The page to open
+ */
+function openPage(page) {
+    $('[data-page]').hide();
+    $('[data-page="' + page + '"').show();
+}

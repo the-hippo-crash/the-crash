@@ -26,30 +26,40 @@ class Encryption {
      * Returns the public key in base64 format
      * @returns {string}
      */
-    getPublicKey() {
-        return this._getKey('public');
+    getPublicKey(removeHeaders) {
+        return this._getKey('public', removeHeaders);
     }
 
     /**
      * Returns the private key in base64 format
      * @returns {null}
      */
-    getPrivateKey() {
-        return this._getKey('private');
+    getPrivateKey(removeHeaders) {
+        return this._getKey('private', removeHeaders);
     }
 
     /**
      * Return the key in base64 format
      * @param {string} type 'public' or 'private'
+     * @param {boolean} removeHeaders Whether or not to remove the header (and footer). Default to false.
      * @returns {string} key in base64 format
      * @private
      */
-    _getKey(type) {
+    _getKey(type, removeHeaders) {
         if(!this._key) {
             return null;
         }
 
-        return this._key.exportKey('pkcs1-' + type);
+        // Get the key
+        let key = this._key.exportKey('pkcs1-' + type);
+
+        // Remove the header if needed.
+        if(removeHeaders) {
+            key = this._removeHeaders(key);
+        }
+
+        // Return the key
+        return key;
     }
 
     /**
@@ -127,6 +137,16 @@ class Encryption {
       // source_encoding — {string} — same as for encrypt method.
       // signature_encoding — {string} — encoding of given signature. May be 'buffer', 'binary', 'hex' or 'base64'. Default 'buffer'.
       return this._key.verify(Buffer.from(fileData), Buffer.from(signature), 'buffer', 'base64');
+    }
+
+    /**
+     * Removes RSA key headers (and footers) like '-----BEGIN RSA PUBLIC KEY-----'
+     * @param keyData
+     * @private
+     */
+    _removeHeaders(keyData) {
+        // Simple remove all lines that start with '-----'
+        return keyData.replace(/^-----.*\n?/gm, '').trim();
     }
 }
 

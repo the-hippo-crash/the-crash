@@ -23,7 +23,8 @@
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
     "node-rsa": "0.4.2",
+    "remote": "^0.2.6",
     "nodemailer": "^2.6.4",
-    "remote": "^0.2.6"
+    "async": "2.1.2"
   }
 }
