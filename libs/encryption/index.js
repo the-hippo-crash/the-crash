@@ -112,7 +112,7 @@ class Encryption {
         throw new Error('No key loaded');
       }
 
-      return this._key.sign(Buffer.from(fileData), 'base64', 'utf8');
+      return this._key.sign(Buffer.from(fileData));
     }
 
   /**
@@ -126,7 +126,7 @@ class Encryption {
       // signature — {string} — signature for check, result of sign method.
       // source_encoding — {string} — same as for encrypt method.
       // signature_encoding — {string} — encoding of given signature. May be 'buffer', 'binary', 'hex' or 'base64'. Default 'buffer'.
-      return this._key.verify(Buffer.from(fileData), Buffer.from(signature), 'buffer', 'base');
+      return this._key.verify(Buffer.from(fileData), Buffer.from(signature), 'buffer', 'base64');
     }
 }
 
