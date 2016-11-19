@@ -13,6 +13,11 @@ let Encryption = require('../../libs/encryption'),
      * Add event listener for form submission
      */
     $(document).ready(function () {
+        settings.has('privateKey').then(exists => {
+            console.log("key exists");
+            openPage("load-key");
+        });
+
         $('form[data-form-generate-key]').on('submit', function(e) {
             e.preventDefault();
 
@@ -43,6 +48,11 @@ let Encryption = require('../../libs/encryption'),
                     // Display file locations
                     $('#generate-key-pair-path-private').text(dir + '/private.key');
                     $('#generate-key-pair-path-public').text(dir + '/public.key');
+
+                    // Save private key dir in config
+                    settings.defaults({
+                        privateKey: dir + '/private.key'
+                    });
 
                     // Display the next view.
                     openPage('generate-key--generated');
