@@ -7,12 +7,25 @@ const async = require('async'),
 // @TODO: Key files should be stored with the right permissions.
 
 (function ($) {
-    const settings = require('electron-settings');
     /**
      * Add event listener for form submission
      */
     $(document).ready(function () {
+        const settings = require('electron-settings');
 
+
+        // settings.set('name', {
+        //     first: 'Cosmo',
+        //     last: 'Kramer'
+        // }).then(() => {
+        //     settings.get('name.first').then(val => {
+        //         console.log(val);
+        //         // => "Cosmo"
+        //     });
+        // });
+
+        settings.getSettingsFilePath();
+        // => /Users/You/Library/Application Support/YourApp/Settings
 
         $('form[data-form-generate-key]').on('submit', function (e) {
             e.preventDefault();
@@ -45,12 +58,14 @@ const async = require('async'),
                     $('#generate-key-pair-path-private').text(dir + '/private.key');
                     $('#generate-key-pair-path-public').text(dir + '/public.key');
 
-                    // Save private key dir in config
-                    settings.defaults({
-                        privateKey: dir + '/private.key'
+                    settings.has("private.location").then(exists => {
+                        console.log(exists);
+                        if (exists === false) {
+                            settings.set('private', {
+                                location: dir + '/private.key'
+                            });
+                        }
                     });
-
-                    // Display the next view.
                     openPage('generate-key--generated');
                 });
             });

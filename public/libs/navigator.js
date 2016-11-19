@@ -1,12 +1,12 @@
 'use strict';
 
-(function($) {
+(function ($) {
 
     /**
      * Add event handlers for navigation links
      */
-    $(document).ready(function() {
-        $('[data-open-page]').on('click', function(e) {
+    $(document).ready(function () {
+        $('[data-open-page]').on('click', function (e) {
             let page = $(e.target).attr('data-open-page');
             openPage(page);
         });
@@ -24,5 +24,17 @@ function openPage(page) {
 }
 
 function openHome() {
-
+    const settings = require('electron-settings');
+    settings.has("private.location").then(exists => {
+        if (exists) {
+            settings.get('private.location').then(result => {
+                encryption.loadKey(result, 'pkcs1-private', function () {
+                    // When done loading key move to next page
+                    console.log('opening page');
+                    openPage('load-key');
+                })
+            });
+        }
+    });
+    openPage('start');
 }

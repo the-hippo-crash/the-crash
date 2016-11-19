@@ -121,7 +121,6 @@ class Encryption {
       if(!this._key) {
         throw new Error('No key loaded');
       }
-
       return this._key.sign(Buffer.from(fileData));
     }
 
@@ -137,6 +136,15 @@ class Encryption {
       // source_encoding — {string} — same as for encrypt method.
       // signature_encoding — {string} — encoding of given signature. May be 'buffer', 'binary', 'hex' or 'base64'. Default 'buffer'.
       return this._key.verify(Buffer.from(fileData), Buffer.from(signature), 'buffer', 'base64');
+    }
+
+    isLoaded(){
+        if(!this._key) {
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     /**
