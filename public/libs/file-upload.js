@@ -13,8 +13,7 @@
         });
 
         $('#generate-keys-button-js').on('click', function () {
-            var keyPair = encryption.generateKeyPair();
-            alert("Generated keypair :) ");
+
         });
     });
 })();
