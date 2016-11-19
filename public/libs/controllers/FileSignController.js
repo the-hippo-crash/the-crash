@@ -1,5 +1,7 @@
 'use strict';
 
+let Signer = require('../../libs/signer');
+
 (function ($) {
   $(document).ready(function () {
     var signer = new Signer();
