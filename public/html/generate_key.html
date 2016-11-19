@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Key factory</title>
+        <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../dist/css/main.css" rel="stylesheet"/>
+        <script>
+            // // For bootstrap
+            var $ = require('jquery');
+            // expose jquery for bootstrap
+            window.jQuery = $;
+            require('bootstrap');
+        </script>
+        <script src="../libs/file-upload.js"></script>
+        <script src="../libs/navigator.js"></script>
+        <script src="../libs/fs-picker.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div data-page="generate-key" style="display: block;">
+                <h1>New key generation</h1>
 
-</body>
+                <p>
+                    <input type="text" data-directory-picker />
+                    <input type="button" value="Generate" data-open-page="generate-key--generated" />
+                </p>
+
+                <p>
+                    <input type="button" value="Cancel" /> &lt;--- Still need to add target page here
+                </p>
+            </div>
+
+            <div data-page="generate-key--generated">
+                <h1>Key generated!</h1>
+
+                <p>
+                    Key pair has been saved to <code>/home/mit-ceo/private.key</code> and <code>/home/mit-ceo/public.key</code>.
+                </p>
+
+                <p>
+                    To start using this key, create a new <code>txt</code> DNS record for your root domain, with the following value:
+                </p>
+
+                <textarea rows="5" cols="50">Print the public key here, without the dashed metadata.</textarea>
+
+                <p>
+                    <input type="button" value="Close" /> &lt;--- Still need to add target page here
+                </p>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        // You can also require other files to run in this process
+        require('./../renderer.js')
+    </script>
 </html>

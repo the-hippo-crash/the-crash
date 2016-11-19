@@ -17,7 +17,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'public/html/index.html'),
+    pathname: path.join(__dirname, 'public/html/generate_key.html'),
     protocol: 'file:',
     slashes: true
   }));
@@ -56,9 +56,7 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
-})
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
